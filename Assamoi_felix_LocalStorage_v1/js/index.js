@@ -1,8 +1,8 @@
 function appliquerTheme(theme) {
-    // Sauvegarder le thème dans localStorage
+    // Sauvegarde du thème dans localStorage
     localStorage.setItem('theme', theme);
     
-    // Appliquer le thème à la page
+    // Application le thème à la page
     document.getElementById('maPage').className = theme;
 }
 
@@ -25,9 +25,9 @@ function ajouterEcouteursEvenements() {
 }
 
 function initialiser() {
-    // Vérifier si le navigateur supporte localStorage
+    // Vérification du navigateur 
     if (typeof(Storage) !== "undefined") {
-        // Récupérer le thème sauvegardé ou utiliser 'jour' par défaut
+        // Récupération du thème sauvegardé ou utilisatn de 'jour' par défaut
         const theme = localStorage.getItem('theme') || 'jour';
         appliquerTheme(theme);
     } else {
@@ -38,5 +38,5 @@ function initialiser() {
     ajouterEcouteursEvenements();
 }
 
-// Démarrer l'application
+// Démarage de l'appli
 initialiser();

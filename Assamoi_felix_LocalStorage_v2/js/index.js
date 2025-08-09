@@ -1,8 +1,8 @@
 function appliquerTheme(theme) {
-    // Sauvegarder le thème dans localStorage
+    // Sauvgarde du thème dans localStorage
     localStorage.setItem('theme', theme);
     
-    // Appliquer le thème à la page
+    // Application du thème à la page
     document.getElementById('maPage').className = theme;
 }
 
@@ -36,11 +36,11 @@ function sauvegarderTexte() {
 function initialiser() {
     
     if (typeof(Storage) !== "undefined") {
-        // Récupérer le thème sauvegardé ou utiliser 'jour' par défaut
+        // Récupération du thème sauvegardé ou utilisation de 'jour' par défaut
         const theme = localStorage.getItem('theme') || 'jour';
         appliquerTheme(theme);
         
-        // Récupérer le texte sauvegardé ou utiliser le texte par défaut
+        // Récupération du texte sauvegardé ou utilisation du texte par défaut
         const texte = localStorage.getItem('contenuParagraphe') || 
             "Ceci est un exemple d'utilisation de l'API Local Storage de HTML5";
         document.getElementById('content').textContent = texte;
@@ -51,9 +51,9 @@ function initialiser() {
     
     ajouterEcouteursEvenements();
     
-    // Ajouter l'écouteur pour le bouton de sauvegarde
+    // Ajout d'écouteur pour le bouton de sauvegarde
     document.getElementById('sauvegarderTexte').addEventListener('click', sauvegarderTexte);
 }
 
-// Démarrer l'application
+// Démarrage de l'appli
 initialiser();
