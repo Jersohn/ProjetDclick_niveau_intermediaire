@@ -54,3 +54,24 @@
     background-color: #2196f3;
     color: #fff;
 }
+
+.canvas-container {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+#themeCanvas {
+    border: 1px solid #000;
+    margin: 10px 0;
+    background-color: white;
+}
+
+#genererGraphique {
+    padding: 10px 15px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

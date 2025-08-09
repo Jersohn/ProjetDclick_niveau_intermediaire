@@ -33,6 +33,53 @@ function sauvegarderTexte() {
     }
 }
 
+function dessinerGraphique() {
+    const canvas = document.getElementById('themeCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Effacer le canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Couleurs basées sur le thème actuel
+    const theme = localStorage.getItem('theme') || 'jour';
+    let colors = [];
+    
+    switch(theme) {
+        case 'jour':
+            colors = ['#FFC107', '#FF9800', '#FF5722'];
+            break;
+        case 'nuit':
+            colors = ['#673AB7', '#3F51B5', '#2196F3'];
+            break;
+        case 'nature':
+            colors = ['#4CAF50', '#8BC34A', '#CDDC39'];
+            break;
+        case 'techno':
+            colors = ['#2196F3', '#00BCD4', '#009688'];
+            break;
+    }
+    
+    // Dessiner un graphique à barres
+    const barWidth = 80;
+    const startX = 50;
+    
+    colors.forEach((color, index) => {
+        const height = 50 + Math.random() * 100;
+        ctx.fillStyle = color;
+        ctx.fillRect(startX + (index * (barWidth + 30)), canvas.height - height, barWidth, height);
+        
+        // Texte
+        ctx.fillStyle = '#000';
+        ctx.font = '12px Arial';
+        ctx.fillText(`Bar ${index+1}`, startX + (index * (barWidth + 30)), canvas.height - height - 10);
+    });
+    
+    // Titre
+    ctx.fillStyle = '#000';
+    ctx.font = '16px Arial';
+    ctx.fillText(`Graphique Thème ${theme}`, 100, 30);
+}
+
 function initialiser() {
     
     if (typeof(Storage) !== "undefined") {
@@ -49,10 +96,12 @@ function initialiser() {
         document.getElementById('maPage').className = 'jour';
     }
     
-    ajouterEcouteursEvenements();
-    
-    // Ajout d'écouteur pour le bouton de sauvegarde
     document.getElementById('sauvegarderTexte').addEventListener('click', sauvegarderTexte);
+
+    document.getElementById('genererGraphique').addEventListener('click', dessinerGraphique);
+    
+    ajouterEcouteursEvenements();
+    dessinerGraphique();
 }
 
 // Démarrage de l'appli
