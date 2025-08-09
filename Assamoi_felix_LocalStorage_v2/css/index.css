@@ -1,0 +1,72 @@
+/* Thème Jour */
+.jour {
+    background-color: #f0f0f0;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Thème Nuit */
+.nuit {
+    background-color: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Thème Nature */
+.nature {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    transition: all 0.3s ease;
+}
+
+/* Thème Techno */
+.techno {
+    background-color: #0d47a1;
+    color: #bbdefb;
+    transition: all 0.3s ease;
+}
+
+.theme-btn {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.jour .theme-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.nuit .theme-btn {
+    background-color: #673ab7;
+    color: #fff;
+}
+
+.nature .theme-btn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.techno .theme-btn {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+#nouveauTexte {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    max-width: 500px;
+}
+
+#sauvegarderTexte {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
