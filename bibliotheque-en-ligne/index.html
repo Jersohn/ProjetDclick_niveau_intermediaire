@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="wishlist.html">Ma liste de lecture</a></li>
+					<!--  ligne conditionnellement pour les admins -->
+					<li id="admin-link" style="display: none">
+						<a href="admin.html">Administration</a>
+					</li>
+					<li><a href="login.html">Connexion</a></li>
+					<li><a href="register.html">Inscription</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero">
+				<h2>Bienvenue dans notre bibliothèque en ligne</h2>
+				<p>
+					Découvrez notre vaste collection de livres et créez votre liste de
+					lecture personnelle.
+				</p>
+			</section>
+
+			<section class="search-section">
+				<h2>Rechercher un livre</h2>
+				<form action="results.html" method="GET" id="search-form">
+					<input
+						type="text"
+						name="query"
+						placeholder="Titre ou auteur..."
+						required
+					/>
+					<button type="submit">Rechercher</button>
+				</form>
+			</section>
+
+			<section class="featured-books">
+				<h2>Livres populaires</h2>
+				<div class="books-container">
+					<!-- Les livres populaires seront chargés dynamiquement -->
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script>
+			// Vérifier si l'utilisateur est admin (dans un cas réel, vous vérifieriez cela côté serveur)
+			function checkAdminStatus() {
+				// Cette fonction est un exemple - dans une vraie application,
+				// vous vérifieriez le rôle de l'utilisateur côté serveur
+				const userId = localStorage.getItem("user_id");
+				if (userId === "1") {
+					// Exemple: l'utilisateur avec ID 1 est admin
+					document.getElementById("admin-link").style.display = "block";
+				}
+			}
+
+			// Appeler cette fonction au chargement des pages
+			document.addEventListener("DOMContentLoaded", checkAdminStatus);
+		</script>
+	</body>
+</html>

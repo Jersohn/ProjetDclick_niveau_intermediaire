@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Résultats de recherche - Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="wishlist.html">Ma liste de lecture</a></li>
+					<li><a href="login.html">Connexion</a></li>
+					<li><a href="register.html">Inscription</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<h2>Résultats de recherche pour "<span id="query-term"></span>"</h2>
+			<div class="results-container">
+				<!-- Les résultats seront chargés dynamiquement -->
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script>
+			// Récupérer le terme de recherche depuis l'URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const query = urlParams.get("query");
+			document.getElementById("query-term").textContent = query;
+
+			// Charger les résultats de recherche
+			loadSearchResults(query);
+		</script>
+	</body>
+</html>

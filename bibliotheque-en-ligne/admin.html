@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Administration - Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne - Administration</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="admin.html">Administration</a></li>
+					<li><a href="#" onclick="logout()">Déconnexion</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<h2>Gestion des livres</h2>
+
+			<div class="admin-actions">
+				<button id="add-book-btn" class="btn">Ajouter un livre</button>
+			</div>
+
+			<div
+				id="book-form"
+				style="
+					display: none;
+					margin: 20px 0;
+					padding: 20px;
+					background: #f9f9f9;
+					border-radius: 5px;
+				"
+			>
+				<h3 id="form-title">Ajouter un livre</h3>
+				<form id="book-form-data">
+					<input type="hidden" id="book-id" value="" />
+					<div class="form-group">
+						<label for="titre">Titre:</label>
+						<input type="text" id="titre" name="titre" required />
+					</div>
+					<div class="form-group">
+						<label for="auteur">Auteur:</label>
+						<input type="text" id="auteur" name="auteur" required />
+					</div>
+					<div class="form-group">
+						<label for="description">Description:</label>
+						<textarea
+							id="description"
+							name="description"
+							rows="4"
+							required
+						></textarea>
+					</div>
+					<div class="form-group">
+						<label for="maison_edition">Maison d'édition:</label>
+						<input
+							type="text"
+							id="maison_edition"
+							name="maison_edition"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="nombre_exemplaire">Nombre d'exemplaires:</label>
+						<input
+							type="number"
+							id="nombre_exemplaire"
+							name="nombre_exemplaire"
+							min="0"
+							required
+						/>
+					</div>
+					<button type="submit" class="btn">Enregistrer</button>
+					<button type="button" class="btn btn-danger" onclick="cancelForm()">
+						Annuler
+					</button>
+				</form>
+			</div>
+
+			<div class="books-list">
+				<h3>Liste des livres</h3>
+				<table id="books-table">
+					<thead>
+						<tr>
+							<th>Titre</th>
+							<th>Auteur</th>
+							<th>Éditeur</th>
+							<th>Exemplaires</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Les livres seront chargés dynamiquement -->
+					</tbody>
+				</table>
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script src="js/admin.js"></script>
+	</body>
+</html>

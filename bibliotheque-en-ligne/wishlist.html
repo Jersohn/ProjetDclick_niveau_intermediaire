@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ma liste de lecture - Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="wishlist.html">Ma liste de lecture</a></li>
+					<li><a href="login.html">Connexion</a></li>
+					<li><a href="register.html">Inscription</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<h2>Ma liste de lecture</h2>
+			<div class="wishlist-container">
+				<!-- Les livres de la liste de lecture seront chargés dynamiquement -->
+			</div>
+
+			<div style="text-align: center; margin-top: 20px">
+				<a href="index.html" class="btn">Retour à l'accueil</a>
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script>
+			// Charger la liste de lecture au chargement de la page
+			document.addEventListener("DOMContentLoaded", loadWishlist);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Inscription - Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="wishlist.html">Ma liste de lecture</a></li>
+					<li><a href="login.html">Connexion</a></li>
+					<li><a href="register.html">Inscription</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<div class="auth-form">
+				<h2>Inscription</h2>
+				<form id="register-form">
+					<div class="form-group">
+						<label for="nom">Nom:</label>
+						<input type="text" id="nom" name="nom" required />
+					</div>
+
+					<div class="form-group">
+						<label for="prenom">Prénom:</label>
+						<input type="text" id="prenom" name="prenom" required />
+					</div>
+
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required />
+					</div>
+
+					<div class="form-group">
+						<label for="password">Mot de passe:</label>
+						<input type="password" id="password" name="password" required />
+					</div>
+
+					<div class="form-group">
+						<label for="confirm-password">Confirmer le mot de passe:</label>
+						<input
+							type="password"
+							id="confirm-password"
+							name="confirm-password"
+							required
+						/>
+					</div>
+
+					<button type="submit" class="btn">S'inscrire</button>
+				</form>
+
+				<p>Déjà un compte? <a href="login.html">Connectez-vous ici</a></p>
+
+				<div id="register-message" style="margin-top: 20px"></div>
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script>
+			document
+				.getElementById("register-form")
+				.addEventListener("submit", function (e) {
+					e.preventDefault();
+
+					const nom = document.getElementById("nom").value;
+					const prenom = document.getElementById("prenom").value;
+					const email = document.getElementById("email").value;
+					const password = document.getElementById("password").value;
+					const confirmPassword =
+						document.getElementById("confirm-password").value;
+
+					// Vérifier que les mots de passe correspondent
+					if (password !== confirmPassword) {
+						document.getElementById("register-message").innerHTML =
+							'<p style="color: red;">Les mots de passe ne correspondent pas</p>';
+						return;
+					}
+
+					// Envoyer les données d'inscription au serveur
+					fetch("php/register.php", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							nom: nom,
+							prenom: prenom,
+							email: email,
+							password: password,
+						}),
+					})
+						.then((response) => response.json())
+						.then((data) => {
+							const messageElement =
+								document.getElementById("register-message");
+							if (data.success) {
+								messageElement.innerHTML =
+									'<p style="color: green;">Inscription réussie! Redirection...</p>';
+								// Rediriger vers la page de connexion après 2 secondes
+								setTimeout(() => {
+									window.location.href = "login.html";
+								}, 2000);
+							} else {
+								messageElement.innerHTML = `<p style="color: red;">Erreur: ${data.message}</p>`;
+							}
+						})
+						.catch((error) => {
+							console.error("Erreur:", error);
+							document.getElementById("register-message").innerHTML =
+								'<p style="color: red;">Erreur de connexion au serveur</p>';
+						});
+				});
+		</script>
+	</body>
+</html>

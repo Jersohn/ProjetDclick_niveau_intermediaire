@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Détails du livre - Bibliothèque en ligne</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bibliothèque en ligne</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="wishlist.html">Ma liste de lecture</a></li>
+					<li><a href="login.html">Connexion</a></li>
+					<li><a href="register.html">Inscription</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<div class="book-details">
+				<h2 id="book-title">Titre du livre</h2>
+				<p class="book-author">Auteur: <span id="book-author"></span></p>
+				<p class="book-publisher">Éditeur: <span id="book-publisher"></span></p>
+				<p class="book-copies">
+					Exemplaires disponibles: <span id="book-copies"></span>
+				</p>
+
+				<div class="book-description">
+					<h3>Description</h3>
+					<p id="book-description"></p>
+				</div>
+
+				<button id="add-to-wishlist" class="btn">
+					Ajouter à ma liste de lecture
+				</button>
+				<a href="index.html" class="btn">Retour à l'accueil</a>
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 Bibliothèque en ligne. Tous droits réservés.</p>
+		</footer>
+
+		<script src="js/script.js"></script>
+		<script>
+			// Récupérer l'ID du livre depuis l'URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const bookId = urlParams.get("id");
+
+			if (bookId) {
+				loadBookDetails(bookId);
+			} else {
+				document.querySelector(".book-details").innerHTML =
+					'<p>Livre non trouvé. <a href="index.html">Retour à l\'accueil</a></p>';
+			}
+		</script>
+	</body>
+</html>
